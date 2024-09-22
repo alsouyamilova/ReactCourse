@@ -8,7 +8,7 @@ root.render(
   <ul>
     {restaurants.map((rest) => (
       <div>
-        <h1 style={{ color: "#386890" }}>{rest.name}</h1>
+        <h2 style={{ color: "#386890" }}>{rest.name}</h1>
 
         <div>
           <h3>Menu</h3>
