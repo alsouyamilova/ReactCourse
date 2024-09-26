@@ -6,8 +6,6 @@ import Button from "../button/Button";
 
 export const App = ({ title }) => {
   const [activeRestaurantId, setaActiveRestaurantId] = useState(restaurants[0].id);
-  console.log(restaurants.find(r => r.id =='a757a0e9-03c1-4a2a-b384-8ac21dbe2fb2'))
-
   return (
       <Layout>
         <h1 style={{ color: "#386890" }}>{title}</h1>
