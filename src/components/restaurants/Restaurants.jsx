@@ -1,7 +1,9 @@
 import { Counter } from "../counter/counter";
-export const Restaurants = ({ name, menu, reviews }) => {
+export const Restaurant = ({ name, menu, reviews }) => {
+  if(!Boolean(name.length) | menu.length == 0){
+    return null
+  }
   return (
-    name.length > 0 & menu.length > 0 ? 
     <ul>
         <div>
           <h2 style={{ color: "#386890" }}>{name}</h2>
@@ -38,6 +40,6 @@ export const Restaurants = ({ name, menu, reviews }) => {
           </ul>  
         </div>
 
-    </ul> : null
-  );
+    </ul>
+  )
 };
