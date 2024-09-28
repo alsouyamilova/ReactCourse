@@ -1,0 +1,8 @@
+.progressbar {
+    height: 5px;
+    background-color:  #386890;
+    overflow: hidden;
+    position: fixed;
+    transition: width 1s;
+    opacity: 0.4;
+  }
