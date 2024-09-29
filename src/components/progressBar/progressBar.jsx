@@ -2,22 +2,26 @@ import classes from "./ProgressBar.module.css";
 import { useEffect, useState } from "react";
 
 export const ProgressBar = () => {
-  const [y, setY] = useState(window.scrollY); // storing current scroll bar positiotn
-  const [totalY, setTotalY] = useState(); // storing Total Scrollable area
-  const [scrollBar, setScrollBar] = useState(); // storing Size of scroll bar
+  const [scrollBarPosition, setScrollBarPosition] = useState(window.scrollY);
 
-  const calculateProgress = () => {
-    const y = window.scrollY;
-    const pageHeight =
-      document.documentElement.scrollHeight - window.innerHeight;
-    return Math.floor((y / pageHeight) * 100);
-  };
   useEffect(() => {
-    window.addEventListener("scroll", () => setY(calculateProgress()));
-    return () => {};
-  }, [y]);
+    const calculateProgress = () => {
+      const pageHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+      return Math.floor((window.scrollY / pageHeight) * 100);
+    };
+    window.addEventListener("scroll", () => {
+      setScrollBarPosition(calculateProgress());
+    });
+    return () => {
+      window.removeEventListener("scroll", calculateProgress);
+    };
+  }, [scrollBarPosition]);
 
   return (
-    <div className={classes.progressbar} style={{ width: `${y}%` }}></div> // This is our
+    <div
+      className={classes.progressbar}
+      style={{ width: `${scrollBarPosition}%` }}
+    ></div> // This is our
   );
 };
