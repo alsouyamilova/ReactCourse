@@ -1,7 +1,7 @@
 import { restaurants } from "../../data/mock";
 import { Layout } from "../layout/Layout";
-import { Restaurant } from "../restaurants/Restaurants";
-import { useState, useEffect } from "react";
+import { Restaurant } from "../restaurant/Restaurant";
+import { useState} from "react";
 import Button from "../button/Button";
 
 export const App = ({ title }) => {
