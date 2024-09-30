@@ -8,11 +8,9 @@ export const ProgressBar = () => {
     const calculateProgress = () => {
       const pageHeight =
         document.documentElement.scrollHeight - window.innerHeight;
-      return Math.floor((window.scrollY / pageHeight) * 100);
+        setScrollBarPosition(Math.floor((window.scrollY / pageHeight) * 100));
     };
-    window.addEventListener("scroll", () => {
-      setScrollBarPosition(calculateProgress());
-    });
+    window.addEventListener("scroll", () => calculateProgress());
     return () => {
       window.removeEventListener("scroll", calculateProgress);
     };
