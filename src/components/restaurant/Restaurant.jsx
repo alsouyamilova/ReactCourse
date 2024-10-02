@@ -1,6 +1,7 @@
 import { Counter } from "../counter/counter";
 import { ReviewForm } from "../reviewForm/reviewForm";
 import { Reviews } from "../reviews/Reviews";
+import styles from "./Restaurant.module.css";
 
 import { Menu } from "../menu/Menu";
 export const Restaurant = ({ id, name, menu, reviews }) => {
@@ -9,21 +10,17 @@ export const Restaurant = ({ id, name, menu, reviews }) => {
   }
 
   return (
-    <ul>
+    <>
       <div>
-        <h2 style={{ color: "#386890" }}>{name}</h2>
-        <div>
-          <h3>Menu</h3>
-        </div>
-        <Menu menu={menu} />
-        <div>
-          <h3>Reviews</h3>{" "}
-        </div>
-        <Reviews reviews={reviews} />
-
-        <h3>Review Form</h3>
-        <ReviewForm key={id} />
+        <h3 className={styles.divider}>Menu</h3>
       </div>
-    </ul>
+      <Menu menu={menu} />
+      <div>
+        <h3 className={styles.divider}>Reviews</h3>{" "}
+      </div>
+      <Reviews reviews={reviews} />
+      <ReviewForm key={id} />
+      <hr></hr>
+    </>
   );
 };

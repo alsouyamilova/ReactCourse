@@ -1,8 +1,9 @@
 import { restaurants } from "../../data/mock";
 import { Layout } from "../layout/Layout";
 import { Restaurant } from "../restaurant/Restaurant";
-import { useState} from "react";
+import { useState } from "react";
 import Button from "../button/Button";
+import "./App.css";
 
 export const App = ({ title }) => {
   const [activeRestaurantId, setaActiveRestaurantId] = useState(
@@ -33,6 +34,7 @@ export const App = ({ title }) => {
           (restaurants) => restaurants.id == activeRestaurantId
         )}
       />
+
       <Restaurant
         key={2}
         {...restaurants.find(

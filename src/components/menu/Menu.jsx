@@ -1,16 +1,20 @@
 import { DishCounter } from "../counter/DishCounter";
+import styles from "./Menu.module.css";
 export const Menu = ({ menu }) => {
   return (
-    <ul>
+    <section className={styles.articles}>
       {menu.map((dish) => (
-        <div key={dish.id}>
-          <li>
-            <b style={{ color: "#4682b4" }}>{dish.name}</b> - ${dish.price}{" "}
-            <DishCounter key={dish.id} />
-          </li>
-          <p>ingredients: {dish.ingredients.join(", ")}</p>
-        </div>
+        <article key={dish.id}>
+          <div className={styles.body}>
+            <h2>{dish.name}</h2>
+            <p className={styles.price}>Price: ${dish.price}</p>
+            <p>ingredients: {dish.ingredients.join(", ")}</p>
+            <p className={styles.counter}>
+              <DishCounter key={dish.id} />
+            </p>
+          </div>
+        </article>
       ))}
-    </ul>
+    </section>
   );
 };

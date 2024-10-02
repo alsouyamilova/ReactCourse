@@ -1,0 +1,79 @@
+.form{
+	margin-left: 40px;
+	max-width: 450px;
+}
+.form label{
+	display:block;
+	margin-bottom: 10px;
+}
+.form label > span{
+	float: left;
+	width: 100px;
+	color:  #a2c5da;
+	font-weight: bold;
+	font-size: 13px;
+	text-shadow: 1px 1px 1px #fff;
+}
+.form fieldset{
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	margin: 0px 0px 10px 0px;
+	border: 1px solid #a2c5da;
+	padding: 20px;
+	background: #ffffff;
+	box-shadow: inset 0px 0px 15px hsl(211, 45%, 86%);
+	-moz-box-shadow: inset 0px 0px 15px #caeff8;
+	-webkit-box-shadow: inset 0px 0px 15px #e5f9ff;
+}
+.form fieldset legend{
+	color: #a2c5da;
+	border-top: 1px solid #d2e0ff;
+	border-left: 1px solid #d2e0ff;
+	border-right: 1px solid #d2e0ff;
+	border-radius: 5px 5px 0px 0px;
+	-webkit-border-radius: 5px 5px 0px 0px;
+	-moz-border-radius: 5px 5px 0px 0px;
+	background: #f4fbff;
+	padding: 0px 8px 3px 8px;
+	box-shadow: -0px -1px 2px #f4fbff;
+	-moz-box-shadow:-0px -1px 2px #f4fbff;
+	-webkit-box-shadow:-0px -1px 2px #f4fbff;
+	font-weight: normal;
+	font-size: 12px;
+}
+.form textarea{
+	width:250px;
+	height:100px;
+}
+.form input[type=text],
+.form textarea{
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border: 1px solid #c2e5ff;
+	outline: none;
+	color: #a2c5da;
+	padding: 5px 8px 5px 8px;
+	box-shadow: inset 1px 1px 4px #c2e5ff;
+	-moz-box-shadow: inset 1px 1px 4px #c2e5ff;
+	-webkit-box-shadow: inset 1px 1px 4px #c2e5ff;
+	/* background: #c2e5ff; */
+	width:50%;
+}
+.form  button{
+	background: #559bc4;
+	border: 1px solid #559bc4;
+	padding: 5px 15px 5px 15px;
+	color: #cbe7ff;
+	box-shadow: inset -1px -1px 3px #d4eaf6;
+	border-radius: 3px;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;	
+	font-weight: bold;
+}
+.required{
+	color:red;
+	font-weight:normal;
+}

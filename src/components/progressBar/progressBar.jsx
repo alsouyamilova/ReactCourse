@@ -14,7 +14,7 @@ export const ProgressBar = () => {
     return () => {
       window.removeEventListener("scroll", calculateProgress);
     };
-  }, [scrollBarPosition]);
+  }, []);
 
   return (
     <div
