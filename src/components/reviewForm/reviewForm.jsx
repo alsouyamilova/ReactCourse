@@ -18,40 +18,41 @@ export const ReviewForm = (props) => {
 
   return (
     <>
-      <form className={styles.form}>
-        <fieldset>
-          <legend>Your feedback</legend>
-          <label>
-            <span>
+      <form className={styles.reviewform}>
+        <fieldset className={styles.formbox}>
+          <legend className={styles.top}>Your feedback</legend>
+          <label className={styles.formlabel}>
+            <span className={styles.formspan}>
               Name <span className={styles.required}>*</span>
             </span>
             <input
               type="text"
+              className={styles.textinput}
               value={name}
-              className={classNames(styles.input, styles.field)}
               onChange={(event) => setName(event.target.value)}
             />
           </label>
 
-          <label>
-            <span>
+          <label className={styles.formlabel}>
+            <span className={styles.formspan}>
               Review <span className={styles.required}>*</span>
             </span>
             <input
               type="text"
+              className={styles.textinput}
               value={review}
               onChange={(event) => setReview(event.target.value)}
             />
           </label>
           <div>
-            <label>
-              <span>
+            <label className={styles.formlabel}>
+              <span className={styles.formspan}>
                 Rating <span className={styles.required}>*</span>
               </span>
               <Counter value={rating} increase={increase} decrease={decrease} />
             </label>
           </div>
-          <button type="button" onClick={clear} className={styles.button}>
+          <button type="button" onClick={clear} className={styles.clearbutton}>
             Clear
           </button>
         </fieldset>
