@@ -5,7 +5,7 @@ export const Reviews = ({ reviews }) => {
         reviews.map((review) => (
           <div key={review.id}>
             <div>
-              <span style={{ width: "30px" }}>
+              <span>
                 <b>{review.user} </b>
               </span>{" "}
               {Array.from(Array(review.rating), (_, i) => (

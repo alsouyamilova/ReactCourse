@@ -12,8 +12,8 @@ export const App = ({ title }) => {
 
   return (
     <Layout>
-      <h1 style={{ color: "#386890" }}>{title}</h1>
-      <section style={{ marginBottom: "1rem" }}>
+      <h1>{title}</h1>
+      <section>
         {restaurants.map(({ id, name, menu }) =>
           Boolean(name) & (menu.length > 0) ? (
             <Button
