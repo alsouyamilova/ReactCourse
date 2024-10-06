@@ -2,7 +2,7 @@ import { restaurants } from "../../data/mock";
 import { Layout } from "../layout/Layout";
 import { Restaurant } from "../restaurant/Restaurant";
 import { useState } from "react";
-import { ThemeContextProvider } from "../theme-context/themeContext";
+import { ThemeUserContextProvider } from "../theme-context/themeContext";
 import Button from "../button/Button";
 import "./App.css";
 
@@ -12,7 +12,7 @@ export const App = ({ title }) => {
   );
 
   return (
-    <ThemeContextProvider>
+    <ThemeUserContextProvider>
       <Layout>
         <h1>{title}</h1>
         <section>
@@ -44,6 +44,6 @@ export const App = ({ title }) => {
           )}
         />
       </Layout>
-    </ThemeContextProvider>
+    </ThemeUserContextProvider>
   );
 };

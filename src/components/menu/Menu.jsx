@@ -1,9 +1,9 @@
 import { DishCounter } from "../counter/DishCounter";
 import styles from "./Menu.module.css";
-import { useTheme } from "../theme-context/useTheme";
+import { useThemeUser } from "../theme-context/useThemeUser";
 
 export const Menu = ({ menu }) => {
-  const { user } = useTheme();
+  const { user } = useThemeUser();
 
   return (
     <section className={styles.articles}>

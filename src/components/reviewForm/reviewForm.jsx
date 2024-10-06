@@ -3,10 +3,10 @@ import { useForm } from "./useForm";
 import { Counter } from "../counter/counter";
 import styles from "./Form.module.css";
 import classNames from "classnames";
-import { useTheme } from "../theme-context/useTheme";
+import { useThemeUser } from "../theme-context/useThemeUser";
 
 export const ReviewForm = (props) => {
-  const { theme } = useTheme();
+  const { theme } = useThemeUser();
   const {
     name,
     setName,

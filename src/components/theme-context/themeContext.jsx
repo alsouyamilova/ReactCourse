@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
-import { ThemeContext } from ".";
+import { ThemeUserContext } from ".";
 
-export const ThemeContextProvider = ({ children }) => {
+export const ThemeUserContextProvider = ({ children }) => {
   const [theme, setTheme] = useState("light");
   const [user, setUser] = useState(null);
 
@@ -24,11 +24,10 @@ export const ThemeContextProvider = ({ children }) => {
       }
     });
   }, []);
-  console.log(user);
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme, user, authUser }}>
+    <ThemeUserContext.Provider value={{ theme, toggleTheme, user, authUser }}>
       {children}
-    </ThemeContext.Provider>
+    </ThemeUserContext.Provider>
   );
 };
