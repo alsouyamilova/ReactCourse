@@ -2,7 +2,7 @@ import { useCallback, useState } from "react";
 import { ThemeContext } from ".";
 
 export const ThemeContextProvider = ({ children }) => {
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState("light");
   const [user, setUser] = useState(null);
 
   const toggleTheme = useCallback(() => {
