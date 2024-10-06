@@ -1,0 +1,22 @@
+.button {
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: bold;
+  font-size: 10px;
+  margin-right: 1rem;
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
+  font-family: "Bebas Neue", cursive;
+  border-color: rgb(5, 46, 92);
+}
+
+.light {
+  color: rgb(5, 46, 92);
+  background-color: white;
+}
+
+.dark {
+  color: white;
+  background-color: rgb(4, 38, 77);
+}

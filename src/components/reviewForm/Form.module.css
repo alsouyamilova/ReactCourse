@@ -61,7 +61,6 @@
   background: #559bc4;
   border: 1px solid #559bc4;
   padding: 5px 15px 5px 15px;
-  color: #cbe7ff;
   box-shadow: inset -1px -1px 3px #d4eaf6;
   border-radius: 3px;
   border-radius: 3px;
@@ -72,4 +71,13 @@
 .required {
   color: red;
   font-weight: normal;
+}
+.light {
+  color: rgb(5, 46, 92);
+  background-color: #cbe7ff;
+}
+
+.dark {
+  color: #cbe7ff;
+  background-color: rgb(5, 46, 92);
 }

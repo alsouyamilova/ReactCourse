@@ -3,8 +3,10 @@ import { useForm } from "./useForm";
 import { Counter } from "../counter/counter";
 import styles from "./Form.module.css";
 import classNames from "classnames";
+import { useTheme } from "../theme-context/useTheme";
 
 export const ReviewForm = (props) => {
+  const { theme } = useTheme();
   const {
     name,
     setName,
@@ -52,7 +54,14 @@ export const ReviewForm = (props) => {
               <Counter value={rating} increase={increase} decrease={decrease} />
             </label>
           </div>
-          <button type="button" onClick={clear} className={styles.clearbutton}>
+          <button
+            type="button"
+            onClick={clear}
+            className={classNames(styles.clearbutton, {
+              [styles.light]: theme === "light",
+              [styles.dark]: theme === "dark",
+            })}
+          >
             Clear
           </button>
         </fieldset>

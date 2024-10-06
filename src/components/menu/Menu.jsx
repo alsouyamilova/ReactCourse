@@ -1,6 +1,10 @@
 import { DishCounter } from "../counter/DishCounter";
 import styles from "./Menu.module.css";
+import { useTheme } from "../theme-context/useTheme";
+
 export const Menu = ({ menu }) => {
+  const { user } = useTheme();
+
   return (
     <section className={styles.articles}>
       {menu.map((dish) => (
@@ -10,7 +14,7 @@ export const Menu = ({ menu }) => {
             <p className={styles.price}>Price: ${dish.price}</p>
             <p>ingredients: {dish.ingredients.join(", ")}</p>
             <div className={styles.counter}>
-              <DishCounter key={dish.id} />
+              {Boolean(user) ? <DishCounter key={dish.id} /> : null}
             </div>
           </div>
         </article>
