@@ -1,8 +1,8 @@
-import { useThemeUser } from "./useThemeUser";
+import { useTheme } from "./useTheme";
 import styles from "./ThemeButton.module.css";
 import classNames from "classnames";
 export const ToggleThemeButton = () => {
-  const { theme, toggleTheme } = useThemeUser();
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <button

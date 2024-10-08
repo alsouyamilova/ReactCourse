@@ -1,8 +1,8 @@
 import styles from "./Button.module.css";
 import classNames from "classnames";
-import { useThemeUser } from "../theme-context/useThemeUser";
+import { useTheme } from "../theme-context/useTheme";
 export default function Button({ children, isActive, ...props }) {
-  const { theme } = useThemeUser();
+  const { theme } = useTheme();
   return (
     //изолированные классы кнопки
     <button

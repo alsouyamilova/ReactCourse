@@ -3,10 +3,12 @@ import styles from "./Layout.module.css";
 import { ToggleThemeButton } from "../theme-context/ThemeButton";
 import Button from "../button/Button";
 
-import { useThemeUser } from "../theme-context/useThemeUser";
+import { useTheme } from "../theme-context/useTheme";
+import { useUser } from "../user-context/useUser";
 
 export const Layout = ({ children }) => {
-  const { theme, toggleTheme, user, authUser } = useThemeUser();
+  const { theme, toggleTheme} = useTheme();
+  const {user, authUser } = useUser();
   return (
     <div className={styles.layout}>
       <ProgressBar />

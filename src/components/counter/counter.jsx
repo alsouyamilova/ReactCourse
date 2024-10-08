@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { DishCounter } from "./DishCounter";
 import styles from "./Counter.module.css";
 import classNames from "classnames";
-import { useThemeUser } from "../theme-context/useThemeUser";
+import { useTheme } from "../theme-context/useTheme";
 
 export const Counter = ({ value, increase, decrease }) => {
-  const { theme } = useThemeUser();
+  const { theme } = useTheme();
   return (
     <div className={styles.counter}>
       <button

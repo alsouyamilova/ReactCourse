@@ -2,9 +2,10 @@ import { restaurants } from "../../data/mock";
 import { Layout } from "../layout/Layout";
 import { Restaurant } from "../restaurant/Restaurant";
 import { useState } from "react";
-import { ThemeUserContextProvider } from "../theme-context/themeContext";
+import { ThemeContextProvider } from "../theme-context/themeContext";
+import { UserContextProvider } from "../user-context/userContext";
 import Button from "../button/Button";
-import "./App.css";
+import styles from "./App.module.css";
 
 export const App = ({ title }) => {
   const [activeRestaurantId, setaActiveRestaurantId] = useState(
@@ -12,9 +13,10 @@ export const App = ({ title }) => {
   );
 
   return (
-    <ThemeUserContextProvider>
+    <ThemeContextProvider>
+        <UserContextProvider>
       <Layout>
-        <h1>{title}</h1>
+        <h1 className={styles.header}>{title}</h1>
         <section>
           {restaurants.map(({ id, name, menu }) =>
             Boolean(name) & (menu.length > 0) ? (
@@ -44,6 +46,7 @@ export const App = ({ title }) => {
           )}
         />
       </Layout>
-    </ThemeUserContextProvider>
+      </UserContextProvider>
+    </ThemeContextProvider>
   );
 };
