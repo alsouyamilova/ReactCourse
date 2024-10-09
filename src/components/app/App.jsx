@@ -6,46 +6,36 @@ import { ThemeContextProvider } from "../theme-context/themeContext";
 import { UserContextProvider } from "../user-context/userContext";
 import Button from "../button/Button";
 import styles from "./App.module.css";
+import { useSelector } from "react-redux";
+import { selectRestaurantIds } from "../../redux/restaurants";
+import { RestaurantTab } from "../restaurantTab/restaurantTab";
 
 export const App = ({ title }) => {
+  const restaurantIds = useSelector(selectRestaurantIds);
   const [activeRestaurantId, setaActiveRestaurantId] = useState(
-    restaurants[0].id
+    restaurantIds[0]
   );
 
   return (
     <ThemeContextProvider>
-        <UserContextProvider>
-      <Layout>
-        <h1 className={styles.header}>{title}</h1>
-        <section>
-          {restaurants.map(({ id, name, menu }) =>
-            Boolean(name) & (menu.length > 0) ? (
-              <Button
+      <UserContextProvider>
+        <Layout>
+          <h1 className={styles.header}>{title}</h1>
+          <section>
+            {restaurantIds.map((id) => (
+              <RestaurantTab
                 key={id}
                 isActive={activeRestaurantId == id}
                 onClick={() => {
                   setaActiveRestaurantId(id);
                 }}
-              >
-                {name}
-              </Button>
-            ) : null
-          )}
-        </section>
-        <Restaurant
-          key={1}
-          {...restaurants.find(
-            (restaurants) => restaurants.id == activeRestaurantId
-          )}
-        />
+              />
+            ))}
+          </section>
+          <Restaurant key={1} id={activeRestaurantId} />
 
-        <Restaurant
-          key={2}
-          {...restaurants.find(
-            (restaurants) => restaurants.id == activeRestaurantId
-          )}
-        />
-      </Layout>
+          <Restaurant key={2} id={activeRestaurantId} />
+        </Layout>
       </UserContextProvider>
     </ThemeContextProvider>
   );

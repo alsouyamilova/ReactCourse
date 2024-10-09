@@ -1,23 +1,18 @@
 import { DishCounter } from "../counter/DishCounter";
 import styles from "./Menu.module.css";
-import { useUser } from "../user-context/useUser";
+
+import { Dish } from "../dish/Dish";
 
 export const Menu = ({ menu }) => {
-  const { user } = useUser();
+  //const restaurant = useSelector((state) => selectRestaurantById(state, id));
+  // const menu_ = useSelector((state) => selectDishById(state, id))
+ 
+
 
   return (
     <section className={styles.articles}>
-      {menu.map((dish) => (
-        <article key={dish.id} className={styles.card}>
-          <div className={styles.body}>
-            <h2 className={styles.header}>{dish.name}</h2>
-            <p className={styles.price}>Price: ${dish.price}</p>
-            <p>ingredients: {dish.ingredients.join(", ")}</p>
-            <div className={styles.counter}>
-              {Boolean(user) ? <DishCounter key={dish.id} /> : null}
-            </div>
-          </div>
-        </article>
+      {menu.map((dishId) => (
+        <Dish key={dishId} id = {dishId}/>
       ))}
     </section>
   );
