@@ -4,7 +4,6 @@ import { cartSlice } from "./uiCart";
 import { dishSlice } from "./dishes";
 import { reviewSlice } from "./reviews";
 import { userSlice } from "./users";
-// import { cartSlice } from "./ui/cart";
 
 export const store = configureStore({
   reducer: {

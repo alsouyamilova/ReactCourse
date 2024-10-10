@@ -15,6 +15,7 @@ export const App = ({ title }) => {
   const [activeRestaurantId, setaActiveRestaurantId] = useState(
     restaurantIds[0]
   );
+  console.log(restaurantIds)
 
   return (
     <ThemeContextProvider>
@@ -25,6 +26,7 @@ export const App = ({ title }) => {
             {restaurantIds.map((id) => (
               <RestaurantTab
                 key={id}
+                id = {id}
                 isActive={activeRestaurantId == id}
                 onClick={() => {
                   setaActiveRestaurantId(id);

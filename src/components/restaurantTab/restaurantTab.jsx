@@ -9,5 +9,9 @@ export const RestaurantTab = ({ id, onClick, isActive }) => {
     return null;
   }
 
-  return <Button onClick={onClick} isActive={isActive}>{restaurant.name}</Button>;
+  return (
+    <Button onClick={onClick} isActive={isActive}>
+      {restaurant.name}
+    </Button>
+  );
 };
