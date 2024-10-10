@@ -15,8 +15,6 @@ export const App = ({ title }) => {
   const [activeRestaurantId, setaActiveRestaurantId] = useState(
     restaurantIds[0]
   );
-  console.log(restaurantIds)
-
   return (
     <ThemeContextProvider>
       <UserContextProvider>
