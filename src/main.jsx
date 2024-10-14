@@ -5,7 +5,7 @@ import { App } from "./components/app/App";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
 root.render(
-  <Provider store = {store}>
-  <App title={"Restaurants"}/>
+  <Provider store={store}>
+    <App />
   </Provider>
 );

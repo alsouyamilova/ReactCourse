@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import { DishCounter } from "./DishCounter";
 import styles from "./Counter.module.css";
 import classNames from "classnames";
 import { useTheme } from "../theme-context/useTheme";

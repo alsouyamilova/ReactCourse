@@ -5,9 +5,10 @@ import Button from "../button/Button";
 import { useTheme } from "../theme-context/useTheme";
 import { useUser } from "../user-context/useUser";
 import { Cart } from "../cart/Cart";
+import { Outlet } from "react-router-dom";
+import { Timer } from "../../timer/Timer";
 
-export const Layout = ({ children }) => {
-  const { theme, toggleTheme } = useTheme();
+export const Layout = () => {
   const { user, authUser } = useUser();
   return (
     <div className={styles.layout}>
@@ -23,9 +24,12 @@ export const Layout = ({ children }) => {
             {Boolean(user) ? <>Выйти</> : <>Войти</>}
           </Button>
         </span>
+        <span>
+          <Timer />
+        </span>
       </header>
-      {children}
-      <Cart />
+      <Outlet />
+      {Boolean(user) ? <Cart /> : null}
       <footer>Test React application, 2024</footer>
     </div>
   );

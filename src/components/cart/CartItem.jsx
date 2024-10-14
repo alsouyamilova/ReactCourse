@@ -1,4 +1,3 @@
-import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectDishById } from "../../redux/dishes";
 import { addToCart, removeFromCart } from "../../redux/uiCart";
@@ -14,7 +13,7 @@ export const CartItem = ({ id, amount }) => {
   }
   return (
     <div>
-      {name} <Counter value = {amount} increase = {increase} decrease = {decrease} />
+      {name} <Counter value={amount} increase={increase} decrease={decrease} />
     </div>
   );
 };
