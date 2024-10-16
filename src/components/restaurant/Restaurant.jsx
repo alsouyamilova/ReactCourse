@@ -6,7 +6,7 @@ import { Outlet, useLocation } from "react-router-dom";
 
 export const Restaurant = ({ id }) => {
   const restaurant = useSelector((state) => selectRestaurantById(state, id));
-  const { name, menu, reviews } = restaurant || {};
+  const { name, menu } = restaurant || {};
 
   const { user } = useUser();
   if (!Boolean(name.length) || menu.length == 0) {

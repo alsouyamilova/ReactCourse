@@ -10,7 +10,6 @@ export const DishPage = () => {
   const { dishId } = useParams();
   const dish = useSelector((state) => selectDishById(state, dishId));
   const { name, price, ingredients } = dish || {};
-  console.log(dishId);
   return (
     <article key={dishId} className={styles.card}>
       <div className={styles.body}>

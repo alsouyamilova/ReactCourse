@@ -11,8 +11,7 @@ export const RestaurantTab = ({ id }) => {
     return null;
   }
   const location = useLocation();
-
-  const isActive = location.pathname === `/restaurantspage/${id}`;
+  const isActive = location.pathname.includes(`/restaurantspage/${id}`)
 
   return (
     <Button onClick={() => navigate(id)} isActive={isActive}>

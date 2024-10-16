@@ -8,12 +8,14 @@ export const SubTabs = ({ id }) => {
     navigate("menu");
   }, [id]);
 
+  const location = useLocation();
+
   return (
     <div>
-      <Button onClick={() => navigate("menu")} isActive={false}>
+      <Button onClick={() => navigate("menu")} isActive={location.pathname.split("/").includes("menu")}>
         Menu
       </Button>
-      <Button onClick={() => navigate("reviews")} isActive={false}>
+      <Button onClick={() => navigate("reviews")} isActive={location.pathname.split("/").includes("reviews")}>
         Reviews
       </Button>
     </div>

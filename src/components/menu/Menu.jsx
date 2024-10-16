@@ -1,5 +1,5 @@
 import styles from "./Menu.module.css";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import {useNavigate, useParams } from "react-router-dom";
 import { Dish } from "../dish/Dish";
 import { useSelector } from "react-redux";
 import { selectRestaurantById } from "../../redux/restaurants";
