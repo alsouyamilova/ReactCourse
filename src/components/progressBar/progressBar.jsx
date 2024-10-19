@@ -8,7 +8,7 @@ export const ProgressBar = () => {
     const calculateProgress = () => {
       const pageHeight =
         document.documentElement.scrollHeight - window.innerHeight;
-        setScrollBarPosition(Math.floor((window.scrollY / pageHeight) * 100));
+      setScrollBarPosition(Math.floor((window.scrollY / pageHeight) * 100));
     };
     window.addEventListener("scroll", () => calculateProgress());
     return () => {
@@ -20,6 +20,6 @@ export const ProgressBar = () => {
     <div
       className={classes.progressbar}
       style={{ width: `${scrollBarPosition}%` }}
-    ></div> // This is our
+    ></div>
   );
 };
