@@ -1,27 +1,17 @@
 import { Review } from "../review/Review";
 import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { getReviews } from "../../redux/reviews/getReviews";
-import { useEffect } from "react";
-import {
-  selectReviewIds,
-  selectRewiesRequestStatus,
-} from "../../redux/reviews";
+import { useSelector } from "react-redux";
+import { selectRestaurantById } from "../../redux/restaurants";
 export const Reviews = () => {
   const { restaurantId } = useParams();
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getReviews(restaurantId));
-  }, [dispatch, restaurantId]);
-  const reviewIds = useSelector(selectReviewIds);
-  const requestStatus = useSelector(selectRewiesRequestStatus);
-  if (requestStatus === "idle" || requestStatus === "pending") {
-    return "loading";
-  }
+  const restaurant = useSelector((state) =>
+    selectRestaurantById(state, restaurantId)
+  );
+  const { reviews } = restaurant || {};
   return (
     <ul>
-      {reviewIds.length > 0 ? (
-        reviewIds.map((id) => <Review key={id} id={id} />)
+      {reviews.length > 0 ? (
+        reviews.map((id) => <Review key={id} id={id} />)
       ) : (
         <>No reviews yet</>
       )}
