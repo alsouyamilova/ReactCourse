@@ -5,7 +5,7 @@ import { getRestaurantReviews } from "../../redux/reviews/getRestaurantReviews";
 import { useEffect } from "react";
 import {
   selectReviewIds,
-  selectRewiesRequestStatus,
+  selectReviewsRequestStatus,
 } from "../../redux/reviews";
 import { getUsers } from "../../redux/users/getUsers";
 export const Reviews = () => {
@@ -16,7 +16,7 @@ export const Reviews = () => {
     dispatch(getUsers());
   }, [dispatch, restaurantId]);
   const reviewIds = useSelector(selectReviewIds);
-  const requestStatus = useSelector(selectRewiesRequestStatus);
+  const requestStatus = useSelector(selectReviewsRequestStatus);
   if (requestStatus === "idle" || requestStatus === "pending") {
     return "loading";
   }
