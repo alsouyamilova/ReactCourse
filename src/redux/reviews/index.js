@@ -1,5 +1,5 @@
 import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
-import { getRestaurantReviews } from "./getRestaurantReviews";
+import { getReviews } from "./getReviews";
 const entityAdapter = createEntityAdapter();
 
 export const reviewSlice = createSlice({
@@ -12,14 +12,14 @@ export const reviewSlice = createSlice({
   },
   extraReducers: (builder) =>
     builder
-      .addCase(getRestaurantReviews.pending, (state) => {
+      .addCase(getReviews.pending, (state) => {
         state.requestStatus = "pending";
       })
-      .addCase(getRestaurantReviews.fulfilled, (state, { payload }) => {
+      .addCase(getReviews.fulfilled, (state, { payload }) => {
         entityAdapter.setAll(state, payload);
         state.requestStatus = "fulfilled";
       })
-      .addCase(getRestaurantReviews.rejected, (state) => {
+      .addCase(getReviews.rejected, (state) => {
         state.requestStatus = "rejected";
       }),
 });
