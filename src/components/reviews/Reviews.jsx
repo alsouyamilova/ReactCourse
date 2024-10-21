@@ -15,8 +15,6 @@ export const Reviews = () => {
     dispatch(getRestaurantReviews(restaurantId));
     dispatch(getUsers());
   }, [dispatch, restaurantId]);
-
-
   const reviewIds = useSelector(selectReviewIds);
   const requestStatus = useSelector(selectReviewsRequestStatus);
   if (requestStatus === "idle" || requestStatus === "pending") {
