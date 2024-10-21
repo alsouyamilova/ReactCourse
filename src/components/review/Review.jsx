@@ -1,14 +1,7 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { selectReviewById } from "../../redux/reviews";
 import { selectUserById, selectUserRequestStatus } from "../../redux/users";
-import { useEffect } from "react";
-import { getUsers } from "../../redux/users/getUsers";
 export const Review = ({ id }) => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getUsers());
-  }, [dispatch]);
-
   const review = useSelector((state) => selectReviewById(state, id));
 
   const { reviewId, userId, text, rating } = review;

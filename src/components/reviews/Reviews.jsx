@@ -1,18 +1,22 @@
 import { Review } from "../review/Review";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getReviews } from "../../redux/reviews/getReviews";
+import { getRestaurantReviews } from "../../redux/reviews/getRestaurantReviews";
 import { useEffect } from "react";
 import {
   selectReviewIds,
   selectReviewsRequestStatus,
 } from "../../redux/reviews";
+import { getUsers } from "../../redux/users/getUsers";
 export const Reviews = () => {
   const { restaurantId } = useParams();
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getReviews(restaurantId));
+    dispatch(getRestaurantReviews(restaurantId));
+    dispatch(getUsers());
   }, [dispatch, restaurantId]);
+
+
   const reviewIds = useSelector(selectReviewIds);
   const requestStatus = useSelector(selectReviewsRequestStatus);
   if (requestStatus === "idle" || requestStatus === "pending") {
