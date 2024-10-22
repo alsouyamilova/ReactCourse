@@ -1,22 +1,21 @@
 import { useCallback, useState } from "react";
-import { UserContext} from ".";
+import { UserContext } from ".";
 
 export const UserContextProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-
+  const [user, setUser] = useState({});
 
   const authUser = useCallback(() => {
     setUser((current) => {
-      if (current === null) {
-        return "user";
+      if (Object.values(current) == 0 ) {
+        return { name: "username", id: "userid" };
       } else {
-        return null;
+        return {};
       }
     });
   }, []);
 
   return (
-    <UserContext.Provider value={{user, authUser }}>
+    <UserContext.Provider value={{ user, authUser }}>
       {children}
     </UserContext.Provider>
   );

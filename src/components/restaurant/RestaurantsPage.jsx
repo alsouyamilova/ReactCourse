@@ -1,30 +1,25 @@
-import { useDispatch, useSelector } from "react-redux";
-import {
-  selectRestaurantIds,
-  selectRestaurantRequestStatus,
-} from "../../redux/restaurants";
 import { RestaurantTab } from "../restaurantTab/restaurantTab";
 import styles from "./Restaurant.module.css";
 import { Outlet } from "react-router-dom";
-import { useEffect } from "react";
-import { getRestaurants } from "../../redux/restaurants/getRestaurants";
+import { useGetRestaurantsQuery } from "../../redux/services/api/api";
 
 export const RestaurantsPage = ({ title }) => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getRestaurants());
-  }, [dispatch]);
-  const restaurantIds = useSelector(selectRestaurantIds);
-  const requestStatus = useSelector(selectRestaurantRequestStatus);
-  if (requestStatus === "idle" || requestStatus === "pending") {
+  const { data, isLoading, isError } = useGetRestaurantsQuery();
+  if (isLoading) {
     return "loading";
+  }
+  if (isError) {
+    return "error";
+  }
+  if (!data?.length) {
+    return null;
   }
   return (
     <div>
       <h1 className={styles.header}>{title}</h1>
       <section>
-        {restaurantIds.map((id) => (
-          <RestaurantTab key={id} id={id} />
+        {data.map(({ id, name }) => (
+          <RestaurantTab key={id} id={id} name={name} />
         ))}
       </section>
       <Outlet />

@@ -1,16 +1,23 @@
-import { useDispatch, useSelector } from "react-redux";
-import { selectDishById } from "../../redux/dishes";
+import { useDispatch } from "react-redux";
 import { addToCart, removeFromCart } from "../../redux/uiCart";
 import { Counter } from "../counter/counter";
+import { useGetDishByIdQuery } from "../../redux/services/api/api";
 
 export const CartItem = ({ id, amount }) => {
-  const { name } = useSelector((state) => selectDishById(state, id)) || {};
+  const { data, isLoading, isError } = useGetDishByIdQuery(id);
+
   const dispatch = useDispatch();
   const increase = () => dispatch(addToCart(id));
-  const decrease = () => dispatch(removeFromCart(id));
-  if (!name) {
+  const decrease = () => dispatch(removeFromCart(id));  if (isLoading) {
+    return "loading";
+  }
+  if (isError) {
+    return "error";
+  }
+  if (!data) {
     return null;
   }
+  const { name } = data;
   return (
     <div>
       {name} <Counter value={amount} increase={increase} decrease={decrease} />

@@ -3,8 +3,12 @@ import { Counter } from "../counter/counter";
 import styles from "./Form.module.css";
 import classNames from "classnames";
 import { useTheme } from "../theme-context/useTheme";
+import { useAddReviewMutation } from "../../redux/services/api/api";
+import { useUser } from "../user-context/useUser";
 
-export const ReviewForm = (props) => {
+export const ReviewForm = ({ restaurantId }) => {
+  const { user } = useUser();
+  const [addReview] = useAddReviewMutation();
   const { theme } = useTheme();
   const {
     name,
@@ -62,6 +66,25 @@ export const ReviewForm = (props) => {
             })}
           >
             Clear
+          </button>
+          <button
+            type="button"
+            onClick={() =>
+              addReview({
+                restaurantId,
+                review: {
+                  userId: user.id,
+                  text: review,
+                  rating,
+                },
+              })
+            }
+            className={classNames(styles.clearbutton, {
+              [styles.light]: theme === "light",
+              [styles.dark]: theme === "dark",
+            })}
+          >
+            Submit
           </button>
         </fieldset>
       </form>

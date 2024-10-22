@@ -1,14 +1,9 @@
 import styles from "./Dish.module.css";
 import { DishCounter } from "../counter/DishCounter";
-import { useSelector } from "react-redux";
-import { selectDishById } from "../../redux/dishes";
 import { useUser } from "../user-context/useUser";
-import { useParams } from "react-router-dom";
 
-export const Dish = ({ id, ...props }) => {
+export const Dish = ({ id, name, ingredients, price , ...props}) => {
   const { user } = useUser();
-  const dish = useSelector((state) => selectDishById(state, id));
-  const { name, price, ingredients } = dish || {};
   return (
     <article key={id} className={styles.card} {...props}>
       <div className={styles.body}>
@@ -16,7 +11,7 @@ export const Dish = ({ id, ...props }) => {
         <p className={styles.price}>Price: ${price}</p>
         <p>ingredients: {ingredients.join(", ")}</p>
         <div className={styles.counter}>
-          {Boolean(user) ? <DishCounter key={id} id={id} /> : null}
+          {Object.values(user).length > 0 ? <DishCounter key={id} id={id} /> : null}
         </div>
       </div>
     </article>

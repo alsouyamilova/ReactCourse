@@ -1,21 +1,16 @@
-import { useSelector } from "react-redux";
-import { selectRestaurantById } from "../../redux/restaurants";
 import { useLocation, useNavigate } from "react-router-dom";
 import Button from "../button/Button";
 
-export const RestaurantTab = ({ id }) => {
-  const restaurant = useSelector((state) => selectRestaurantById(state, id));
+export const RestaurantTab = ({ id, name }) => {
 
   const navigate = useNavigate();
-  if (!restaurant) {
-    return null;
-  }
+
   const location = useLocation();
   const isActive = location.pathname.includes(`/restaurantspage/${id}`)
 
   return (
     <Button onClick={() => navigate(id)} isActive={isActive}>
-      {restaurant.name}
+      {name}
     </Button>
   );
 };

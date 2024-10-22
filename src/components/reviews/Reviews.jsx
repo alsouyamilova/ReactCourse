@@ -1,29 +1,22 @@
 import { Review } from "../review/Review";
 import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { getRestaurantReviews } from "../../redux/reviews/getRestaurantReviews";
-import { useEffect } from "react";
-import {
-  selectReviewIds,
-  selectReviewsRequestStatus,
-} from "../../redux/reviews";
-import { getUsers } from "../../redux/users/getUsers";
+import { useGetRestaurantReviewsQuery } from "../../redux/services/api/api";
 export const Reviews = () => {
   const { restaurantId } = useParams();
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getRestaurantReviews(restaurantId));
-    dispatch(getUsers());
-  }, [dispatch, restaurantId]);
-  const reviewIds = useSelector(selectReviewIds);
-  const requestStatus = useSelector(selectReviewsRequestStatus);
-  if (requestStatus === "idle" || requestStatus === "pending") {
+  const { data, isLoading, isError } = useGetRestaurantReviewsQuery(restaurantId);
+  if (isLoading) {
     return "loading";
+  }
+  if (isError) {
+    return "error";
+  }
+  if (!data?.length) {
+    return null;
   }
   return (
     <ul>
-      {reviewIds.length > 0 ? (
-        reviewIds.map((id) => <Review key={id} id={id} />)
+      {Object.values(data).length > 0 ? (
+        data.map(({id, userId, rating, text}) => <Review key={id} id={id} userId={userId} rating={rating} text={text}/>)
       ) : (
         <>No reviews yet</>
       )}
