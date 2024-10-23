@@ -21,7 +21,7 @@ export const Layout = () => {
         </span>
         <span>
           <Button onClick={authUser}>
-            {Object.values(user).length > 0 ? <>Выйти</> : <>Войти</>}
+            {user.isAuth? <>Выйти</> : <>Войти</>}
           </Button>
         </span>
         <span>
@@ -29,7 +29,7 @@ export const Layout = () => {
         </span>
       </header>
       <Outlet />
-      {Object.values(user).length > 0 ? <Cart /> : null}
+      {user.isAuth? <Cart /> : null}
       <footer>Test React application, 2024</footer>
     </div>
   );

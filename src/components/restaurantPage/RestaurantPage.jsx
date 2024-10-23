@@ -12,7 +12,7 @@ export const RestaurantPage = () => {
     <div>
       <SubTabs id={restaurantId} />
       <Restaurant id={restaurantId} />
-      {Object.values(user).length > 0 ?  <ReviewForm restaurantId = {restaurantId}/> : null}
+      {user.isAuth?  <ReviewForm restaurantId = {restaurantId}/> : null}
       
     </div>
   );

@@ -7,9 +7,9 @@ export const UserContextProvider = ({ children }) => {
   const authUser = useCallback(() => {
     setUser((current) => {
       if (Object.values(current) == 0 ) {
-        return { name: "username", id: "userid" };
+        return { name: "username", id: "userid", isAuth: true };
       } else {
-        return {};
+        return {isAuth: false};
       }
     });
   }, []);

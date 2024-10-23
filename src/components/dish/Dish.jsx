@@ -11,7 +11,7 @@ export const Dish = ({ id, name, ingredients, price , ...props}) => {
         <p className={styles.price}>Price: ${price}</p>
         <p>ingredients: {ingredients.join(", ")}</p>
         <div className={styles.counter}>
-          {Object.values(user).length > 0 ? <DishCounter key={id} id={id} /> : null}
+          {user.isAuth? <DishCounter key={id} id={id} /> : null}
         </div>
       </div>
     </article>
