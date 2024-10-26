@@ -1,17 +1,15 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+"use client";
 import { Restaurant } from "../restaurant/Restaurant";
-import { SubTabs } from "../restaurant/SubTabs";
+import { SubTabs } from "./SubTabs";
 import { ReviewForm } from "../reviewForm/reviewForm";
 import { useUser } from "../user-context/useUser";
 
-export const RestaurantPage = () => {
+export const RestaurantPage = ({restaurantId, children}) => {
   const { user } = useUser();
-  const { restaurantId } = useParams();
   return (
     <div>
       <SubTabs id={restaurantId} />
-      <Restaurant id={restaurantId} />
+      <Restaurant id={restaurantId}>{children}</Restaurant>
       {user.isAuth?  <ReviewForm restaurantId = {restaurantId}/> : null}
       
     </div>

@@ -1,12 +1,13 @@
+"use client"
 import { useParams } from "react-router-dom";
 import styles from "./Dish.module.css";
 import { useUser } from "../user-context/useUser";
 import { DishCounter } from "../counter/DishCounter";
 import { useGetDishByIdQuery } from "../../redux/services/api/api";
 
-export const DishPage = () => {
-  const { user } = useUser();
-  const { dishId } = useParams();
+export const DishPage = ({dishId}) => {
+
+   const { user } = useUser(); 
 
   const { data, isLoading, isError } = useGetDishByIdQuery(dishId);
 

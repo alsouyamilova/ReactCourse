@@ -1,12 +1,13 @@
+"use client"
 import { useCallback, useState } from "react";
 import { UserContext } from ".";
 
 export const UserContextProvider = ({ children }) => {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState({isAuth: false});
 
   const authUser = useCallback(() => {
     setUser((current) => {
-      if (Object.values(current) == 0 ) {
+      if (!current.isAuth) {
         return { name: "username", id: "userid", isAuth: true };
       } else {
         return {isAuth: false};
