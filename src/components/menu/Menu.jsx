@@ -1,11 +1,13 @@
+"use client"
 import styles from "./Menu.module.css";
-import { useNavigate, useParams } from "react-router-dom";
+import { Router, useNavigate, useParams } from "react-router-dom";
 import { Dish } from "../dish/Dish";
 import { useGetDishesQuery } from "../../redux/services/api/api";
+import { useRouter } from "next/navigation";
 
-export const Menu = () => {
+export const Menu = ({children}) => {
   const { restaurantId } = useParams();
-  const navigate = useNavigate();
+  const router = useRouter();
   const { data, isLoading, isError } = useGetDishesQuery(restaurantId);
   if (isLoading) {
     return "loading";
@@ -25,7 +27,7 @@ export const Menu = () => {
           name={name}
           ingredients={ingredients}
           price={price}
-          onClick={() => navigate(`/dish/${id}`)}
+          onClick={() => router.push(`/dish/${id}`)}
         />
       ))}
     </section>

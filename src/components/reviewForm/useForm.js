@@ -1,3 +1,4 @@
+"use client"
 import { useReducer } from "react";
 const SET_NAME_ACTION_TYPE = "setName";
 const INCREASE_ACTION_TYPE = "increase";

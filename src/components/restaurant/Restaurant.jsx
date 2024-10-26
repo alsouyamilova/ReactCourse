@@ -1,10 +1,11 @@
 import styles from "./Restaurant.module.css";
-import { useUser } from "../user-context/useUser";
 import { Outlet, useLocation } from "react-router-dom";
 import { useGetRestaurantByIdQuery } from "../../redux/services/api/api";
+import { usePathname } from "next/navigation";
 
-export const Restaurant = ({ id }) => {
-  const location = useLocation();
+export const Restaurant = ({ id, children }) => {
+  const pathname = usePathname();
+  
  
   const { data, isLoading, isError } = useGetRestaurantByIdQuery(id);
 
@@ -25,9 +26,9 @@ export const Restaurant = ({ id }) => {
 
 
   let title;
-  if (location.pathname.split("/").includes("menu")) {
+  if (pathname.split("/").includes("menu")) {
     title = "Menu";
-  } else if (location.pathname.split("/").includes("reviews")) {
+  } else if (pathname.split("/").includes("reviews")) {
     title = "Reviews";
   }
 
@@ -36,7 +37,7 @@ export const Restaurant = ({ id }) => {
       <div>
         <h3 className={styles.divider}>{title}</h3>
       </div>
-      <Outlet />
+      {children}
       <hr></hr>
     </>
   );

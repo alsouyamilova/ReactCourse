@@ -1,9 +1,9 @@
+'use client'
 import { RestaurantTab } from "../restaurantTab/restaurantTab";
 import styles from "./Restaurant.module.css";
-import { Outlet } from "react-router-dom";
 import { useGetRestaurantsQuery } from "../../redux/services/api/api";
 
-export const RestaurantsPage = ({ title }) => {
+export const RestaurantsPage = ({ title, children }) => {
   const { data, isLoading, isError } = useGetRestaurantsQuery();
   if (isLoading) {
     return "loading";
@@ -22,7 +22,7 @@ export const RestaurantsPage = ({ title }) => {
           <RestaurantTab key={id} id={id} name={name} />
         ))}
       </section>
-      <Outlet />
+      {children}
     </div>
   );
 };

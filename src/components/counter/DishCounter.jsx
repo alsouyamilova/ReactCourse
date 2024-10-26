@@ -1,10 +1,12 @@
+"use client"
 import { Counter } from "./counter";
-import { useDispatch, useSelector } from "react-redux";
+import { Provider, useDispatch, useSelector } from "react-redux";
 import {
   addToCart,
   removeFromCart,
   selectAmountById,
 } from "../../redux/uiCart";
+import { store } from "../../redux/store";
 
 export const DishCounter = ({ id }) => {
   const amount = useSelector((state) => selectAmountById(state, id));
@@ -12,5 +14,5 @@ export const DishCounter = ({ id }) => {
   const increase = () => dispatch(addToCart(id));
   const decrease = () => dispatch(removeFromCart(id));
 
-  return <Counter value={amount} increase={increase} decrease={decrease} />;
+  return <Provider store={store}><Counter value={amount} increase={increase} decrease={decrease} /> </Provider>;
 };
